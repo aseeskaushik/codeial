@@ -10,8 +10,18 @@ const session= require('express-session');
 const passport= require('passport');
 const passportLocal= require('./config/passport-local-strategy');
 
-const MongoStore= require('connect-mongo')(session);
-// const MongoStore= require('connect-mongo');
+// const MongoStore= require('connect-mongo')(session);
+const MongoStore= require('connect-mongo');
+// const sassMiddleware= require('node-sass-middleware');
+
+
+// app.use(sassMiddleware({
+//     src: './assets/scss',
+//     dest: './assets/css',
+//     debug: true,
+//     outputStyle: 'extended',
+//     prefix: '/css'
+// }));
 
 app.use(express.urlencoded());
 app.use(cookieParser());
@@ -39,19 +49,19 @@ app.use(session({
     cookie: {
         maxAge: (1000*60*100)
     },
-   Store: new MongoStore({
-    mongooseConnection: db,
-    autoRemove: 'disabled'
-   },
-   function(err){
-    console.log(err||'Connect mongodb setup ok');
-   }
-   )
+//    store: new MongoStore({
+//     mongooseConnection: db,
+//     autoRemove: 'disabled'
+//    },
+//    function(err){
+//     console.log(err||'Connect mongodb setup ok');
+//    }
+//    )
 //    ,
-//     Store: MongoStore.create(
-//         {
-//             mongoUrl: 'mongodb://127.0.0.1/codeial_development',
-//         }),
+    Store: MongoStore.create(
+        {
+            mongoUrl: 'mongodb://127.0.0.1/codeial_development',
+        }),
 }));
 
 app.use(passport.initialize());
