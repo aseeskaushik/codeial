@@ -1,3 +1,4 @@
+const { request } = require('express');
 const express= require('express');
 
 const router= express.Router();
@@ -10,6 +11,9 @@ router.use('/users',require('./users'));
 
 //for posts routes
 router.use('/posts',require('./posts'));
+
+// for comments routes
+router.use('/comments',require('./comments'));
 
 
 module.exports= router;
