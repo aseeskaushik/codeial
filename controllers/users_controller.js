@@ -1,5 +1,6 @@
 const User= require('../models/user');
 
+// action to render profile page
 module.exports.profile= function(req,res){
     User.findById(req.params.id,function(err,user){
         return res.render('user_profile',{
@@ -9,7 +10,18 @@ module.exports.profile= function(req,res){
     });
 }
 
-// render sign up page
+// action to handle upadate form
+module.exports.update= function(req,res){
+    if(req.user.id== req.params.id){
+        User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+            return res.redirect('back');
+        });
+    }else{
+        return res.status(401).send('Unauthorized');
+    }
+}
+
+// action to render sign up page
 module.exports.signup= function(req,res){
    if(req.isAuthenticated()){
     return res.redirect('/users/profile');
@@ -20,7 +32,7 @@ module.exports.signup= function(req,res){
     });
 }
 
-// render sign in page 
+// render sign in page action
 module.exports.signin= function(req,res){
     if(req.isAuthenticated()){
         return res.redirect('/');

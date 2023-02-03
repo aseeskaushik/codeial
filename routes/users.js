@@ -4,7 +4,11 @@ const router= express.Router();
 const userscontroller= require('../controllers/users_controller');
 const passport= require('passport');
 
+// route for profile page render
 router.get('/profile/:id',passport.checkAuthentication,userscontroller.profile);
+
+// route for profile update form
+router.post('/update/:id',passport.checkAuthentication,userscontroller.update);
 
 // route for sign-up
 router.get('/sign-up',userscontroller.signup);
