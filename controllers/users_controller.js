@@ -64,13 +64,15 @@ module.exports.create= function(req,res){
 
 // sign-in and create a session for user
 module.exports.createSession= function(req,res){
+    req.flash('success','Logged in Successfully');
     return res.redirect('/');
 }
 
-// sign up controller
+// sign out controller
 module.exports.destroySession= function(req, res, next) {
     req.logout(function(err) {
       if (err) { return next(err); }
+      req.flash('success','You have logged Out!');
       res.redirect('/');
     });
   };
