@@ -1,2 +1,9 @@
+* {
+  margin: 0rem;
+  box-sizing: border-box; }
+
 body {
-  margin: 0px; }
+  height: 100vh; }
+
+a {
+  text-decoration: none; }

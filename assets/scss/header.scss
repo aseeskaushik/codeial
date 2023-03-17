@@ -1,0 +1,18 @@
+@mixin flexrow($jc) {
+    display: flex;
+    flex-direction: row;
+    justify-content: $jc;
+    align-items: center;
+}
+
+header{
+    @include flexrow(space-between);
+    background-color: #00c3ff;
+}
+
+#user-info{
+    list-style: none;
+    @include flexrow(space-around);
+    width: 12vw;
+}
+
