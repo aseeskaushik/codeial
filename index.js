@@ -11,7 +11,7 @@ const passport= require('passport');
 const passportLocal= require('./config/passport-local-strategy');
 
 // const MongoStore= require('connect-mongo')(session);
-const MongoStore= require('connect-mongo');
+// const MongoStore= require('connect-mongo');
 const sassMiddleware= require('node-sass-middleware');
 
 
@@ -63,10 +63,11 @@ app.use(session({
 //    }
 //    )
 //    ,
-    Store: MongoStore.create(
-        {
-            mongoUrl: 'mongodb://127.0.0.1/codeial_development',
-        }),
+    // Store: MongoStore.create(
+    //     {
+    //         mongoUrl: 'mongodb://127.0.0.1/codeial_development',
+    //         autoremove: 'disabled'
+    //     }),
 }));
 
 app.use(passport.initialize());

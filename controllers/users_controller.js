@@ -22,11 +22,11 @@ module.exports.update= async function(req,res){
     // }
 
     if(req.user.id== req.params.id){
-         
        try{
           let user= await User.findById(req.params.id);
-          User.uploadedAvater(req,res,function(err){
-            console.log(req.file)
+          console.log('Vande matram');
+          User.uploadedAvatar(req,res,function(err){
+            
             if(err){console.log('*****Multer Error: ',err)};
 
             user.name= req.body.name;
@@ -34,7 +34,7 @@ module.exports.update= async function(req,res){
 
             if(req.file){
                 // this is saving the path of uploaded file into the avatar field in the in the user
-                user.avatar= User.avatarPath + '/' + req.file.filename;
+                user.avatar= user.avatarPath + '/' + req.file.filename;
             }
             user.save();
             
