@@ -27,22 +27,22 @@ module.exports.destroy= async function(req,res){
     try{
     let post= await Post.findById(req.params.id);
         
-          post.remove();
+    if(post.user==req.user.id){
+        post.remove();
+    
+          
 
           await Comment.deleteMany({post: req.params.id});
 
-        //   if(req.xhr){
-        //     return res.status(200).json({
-        //         data: {
-        //             post_id: req.params.id
-        //         },
-        //         message: "Post deleted"
-        //     });
-        //   }
+    
            return res.json(200,{
             message: "Post and asssociated comments deleted successfully"
            })
-          
+    }else{
+        return res.json(401,{
+            message: "you cannot delete this post"
+        });
+    }
           
         
     }catch(err){
