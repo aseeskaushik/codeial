@@ -64,7 +64,7 @@ app.use(
       maxAge: 1000 * 60 * 100,
     },
     store: new MongoStore({
-      uri: `mongodb://127.0.0.1/${process.env.DB}`,
+      uri: `mongodb+srv://proakkaushik:${process.env.DB}@cluster0.hedjjdw.mongodb.net/test?retryWrites=true&w=majority`,
       collection: "mySessions",
     }),
   })
