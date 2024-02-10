@@ -1,10 +1,12 @@
-const queue= require('../config/kue');
-const commentsMailer= require('../mailers/comments_mailer');
+// comment_email_worker.js
+const { parentPort, workerData } = require("worker_threads");
+const commentsMailer = require("../mailers/comments_mailer");
 
-queue.process('emails',function(job,done){
-    console.log('emails worker is processing a job');
+// Ensure the comment object is populated with the user data
+if (workerData && workerData.user) {
+  // Perform email notification task
+  commentsMailer.newComment(workerData);
+}
 
-    commentsMailer.newComment(job.data);
-
-    done();
-});
+// Send a message to the parent thread to indicate success
+parentPort.postMessage({ success: true });
