@@ -1,13 +1,20 @@
-const mongoose= require('mongoose');
-const env= require('./environment');
-mongoose.connect(`mongodb://127.0.0.1/${env.db}`);
+const mongoose = require("mongoose");
+require("dotenv").config(); // Load environment variables from .env file
 
-const db= mongoose.connection;
+mongoose.connect(
+  `mongodb+srv://proakkaushik:${process.env.DB}@cluster0.hedjjdw.mongodb.net/test?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
-db.on('error',console.error.bind(console,"Error in connecting to MongoDB"));
+const db = mongoose.connection;
 
-db.once('open',function(){
-    console.log('Connected to Database:: MongoDB');
-})
+db.on("error", console.error.bind(console, "Error in connecting to MongoDB"));
 
-module.exports= db;
+db.once("open", function () {
+  console.log("Connected to Database:: MongoDB");
+});
+
+module.exports = db;
