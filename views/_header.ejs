@@ -1,15 +1,20 @@
-<header> 
-    <h1><pre> &#60/Codeial&#62</pre></h1>
-
-    <ul id="user-info">
-        <% if(locals.user){ %>
-            <li><a href="/users/profile"><%= user.name %></a></li>
-
-            <li><a href="/users/sign-out">Sign out</a></li>
-        <%}else{%>
-            <li><a href="/users/sign-up">Sign Up</a></li>
-            <li><a href="/users/sign-in">Sign In</a></li>
-        <%}%>
-    </ul>
+<header class="bg-white py-2">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="mb-0" style="font-size: 2rem;">CircleUp</h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <ul id="user-info" class="list-inline mb-0">
+                    <% if(locals.user){ %>
+                        <li class="list-inline-item mr-3"><a href="/users/profile"><%= user.name %></a></li>
+                        <li class="list-inline-item"><a href="/users/sign-out">Sign out</a></li>
+                    <%}else{%>
+                        <li class="list-inline-item mr-3"><a href="/users/sign-up">Sign Up</a></li>
+                        <li class="list-inline-item"><a href="/users/sign-in">Sign In</a></li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+    </div>
 </header>
-   

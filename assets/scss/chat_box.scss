@@ -1,65 +1,69 @@
-// CHANGE :: add styling for the chat box
-#user-chat-box{
+#user-chat-box {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 2rem;
+    right: 2rem;
     border: 1px dashed grey;
-    height: 350px;
-	width: 300px;
-	background: white;
-	padding: 5px;
-	box-shadow: 1px 1px 1px 1px lightgrey;
+    height: 25rem;
+    width: 20rem;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
 
-    #chat-messages-list{
-    	list-style: none;
-	    padding: 10px;
-	    height: 70%;
-	    background-color: white;
-	    overflow: auto;
+    #chat-messages-list {
+        list-style: none;
+        padding: 1rem;
+        height: 70%;
+        background-color: white;
+        overflow: auto;
 
-	    .other-message{
-		    text-align: left;
-		    padding: 5px;
-		    span{
-		    	display: inline-block;
-	    		padding: 15px;
-		    	background-color: #ffa0a0;
-		    }
-		    
-	    }
+        .other-message {
+            text-align: left;
+            padding: 0.5rem;
 
-	    .self-message{
-		    text-align: right;
-		    padding: 5px;
-		   
-		    span{
-		    	 
-	    		display: inline-block;
-	    		padding: 15px;
-    			background-color: #a0dcff;
-		    }
-		   
-	    }
+            span {
+                display: inline-block;
+                padding: 1rem;
+                background-color: #ffa0a0;
+            }
+        }
 
+        .self-message {
+            text-align: right;
+            padding: 0.5rem;
+
+            span {
+                display: inline-block;
+                padding: 1rem;
+                background-color: #a0dcff;
+            }
+        }
     }
-    #chat-message-input-container{
-    	    height: 24%;
-		    width: 100%;
-		    display: flex;
-		    flex-direction: row;
 
-		    #chat-message-input{
-	    	    height: 50%;
-    			width: 70%;
-		    }
+    #chat-message-input-container {
+        height: 30%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-		    #send-message{
-	    	    height: 50%;
-			    width: 30%;
-			    font-size: 25px;
-			    color: white;
-			    border: none;
-			    background: #58d258;
-		    }
-	    }
+        #chat-message-input {
+            flex: 1;
+            height: 100%;
+            padding: 0.5rem;
+            border: 0.1rem solid #ced4da;
+            border-radius: 0.5rem;
+        }
+
+        #send-message {
+            height: 100%;
+            width: 4rem;
+            font-size: 1.6rem;
+            color: white;
+            border: none;
+            background: #58d258;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+    }
 }

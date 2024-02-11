@@ -1,16 +1,75 @@
-#home-container{
+#home-container {
     display: flex;
-    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 2rem;
 }
 
-#feed-posts{
-    width: 70%;
-    padding: 10px;
+#feed-posts, #user-friends {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-color: red;
 }
 
-#user-friends{
-    width: 30%;
-    padding: 10px;
-    border-left: 1px solid lightgrey;
-    height: 100vh;
+#feed-posts {
+    width: 45vw; /* Adjusted width for feed-posts */
+}
+
+#user-friends {
+    width: 22vw; /* Adjusted width for user-friends */
+}
+
+#feed-posts h4, #user-friends h4 {
+    margin-bottom: 1rem;
+    color: #333333;
+}
+
+#new-post-form textarea {
+    width: 100%;
+    border: 0.1rem solid #ced4da;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+#new-post-form button {
+    width: 100%;
+}
+
+#posts-list-container {
+    // max-height: 30rem;
+    overflow-y: auto;
+}
+
+#user-friends p {
+    margin-bottom: 1rem;
+}
+
+#user-friends a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#user-friends a:hover {
+    color: rgba(0, 123, 255,0.5);
+}
+
+#chat-toggle-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    font-size: 2.4rem;
+    cursor: pointer;
+    box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+    z-index: 999;
 }

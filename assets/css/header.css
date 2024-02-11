@@ -1,14 +1,9 @@
 header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #00c3ff; }
+  height: 4rem; }
+  header div div div h1 {
+    font-family: 'Pacifico', cursive; }
 
-#user-info {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 12vw; }
+#user-info .list-inline-item a {
+  font-weight: bold;
+  color: #6e6f72;
+  text-decoration: none; }
