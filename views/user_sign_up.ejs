@@ -1,12 +1,63 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<h1>
-    Sign Up
-</h1>
+<div class="container-fluid d-flex justify-content-center align-items-center" style="background-color: #f8f9fa; min-height: 90vh;">
+    <div class="col-md-6 p-5" style="background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); max-width: 30vw; min-height: 70vh;">
+        <h2 class="mb-4">Sign Up</h2>
+        <form action="/users/create" method="POST">
+            <div class="form-group position-relative pb-3">
+                <input type="text" name="name" class="form-control border-0 no-outline" placeholder="Your Name" required>
+                <span class="underline" style="background-color: #6e6f72;"></span>
+            </div>
+            <div class="form-group position-relative pb-3">
+                <input type="email" name="email" class="form-control border-0 no-outline" placeholder="Your Email" required>
+                <span class="underline" style="background-color: #6e6f72;"></span>
+            </div>
+            <div class="form-group position-relative pb-3">
+                <input type="password" name="password" class="form-control border-0 no-outline" placeholder="Password" required>
+                <span class="underline" style="background-color: #6e6f72;"></span>
+            </div>
+            <div class="form-group position-relative pb-3">
+                <input type="password" name="confirm_password" class="form-control border-0 no-outline" placeholder="Confirm Password" required>
+                <span class="underline" style="background-color: #6e6f72;"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-4">Sign Up</button>
+        </form>
+    </div>
+</div>
 
-<form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input type="submit" value="Sign Up">
-</form>
+<style>
+    .underline {
+        position: absolute;
+        bottom: 1.1rem; /* Adjust position to be just below the placeholder */
+        left: 0;
+        width: 100%;
+        height: 0.5px;
+    }
+
+    .form-control {
+        color: #6e6f72;
+        border: none; /* Remove default border */
+        border-radius: 0; /* Ensure no border radius */
+        box-shadow: none; /* Remove any box shadow */
+        height: 2.5rem; /* Match height with placeholder */
+    }
+
+    .form-control:focus {
+        border: none; /* Remove focus border */
+        box-shadow: none; /* Remove focus box shadow */
+        outline: none; /* Remove blue outline on focus */
+    }
+
+    .form-control::placeholder {
+        color: #6e6f72; /* Adjust placeholder color */
+        font-size: 1rem; /* Adjust placeholder font size */
+        position: relative; /* Ensure placeholder is positioned relative to the input */
+    }
+
+    .form-group {
+        position: relative;
+    }
+
+    .form-control:focus + .underline,
+    .form-control:not(:placeholder-shown) + .underline {
+        background-color: #6e6f72; /* Change underline color when input is focused or not empty */
+    }
+</style>
