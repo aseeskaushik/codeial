@@ -12,6 +12,7 @@
                 <% if(locals.user){ %>
                 <form action="/posts/create" id="new-post-form" method="POST" class="mb-3">
                     <div class="form-group">
+                        <!-- 1. this textarea -->
                         <textarea name="content" class="form-control" rows="3" placeholder="Type Here..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Post</button>

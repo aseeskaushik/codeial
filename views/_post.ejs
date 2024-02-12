@@ -1,53 +1,100 @@
+<!-- Link to Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<li id="post-<%= post._id %>">
-   <p>
+<!-- CSS styles -->
+<style>
+    /* Remove underline from links on hover */
+    a:hover {
+        text-decoration: none;
+    }
+
+    /* Adjust position of delete icon for comments */
+    .delete-comment-button {
+        margin-right: 10px; /* Adjust as needed */
+    }
+
+    /* Custom color for like and comment buttons */
+    .like-comment-button {
+        color: #333; /* Dark grey color */
+    }
+</style>
+
+<li id="post-<%= post._id %>" class="list-group-item mb-3">
+   <div class="d-flex w-100 justify-content-between">
+       <p class="mb-1">
+           <%= post.content %>
+           <br>
+           <small>
+               <%= post.user.name %>
+           </small>
+       </p>
+       <!-- Delete button for the post -->
        <% if (locals.user && locals.user.id == post.user.id){ %>
-       <small>
-           <a class="delete-post-button"  href="/posts/destroy/<%= post.id %>">X</a>
-       </small>
+           <div class="ml-3">
+               <small>
+                   <a class="delete-post-button text-danger" href="/posts/destroy/<%= post.id %>">
+                       <i class="fas fa-trash"></i>
+                   </a>
+               </small>
+           </div>
        <% } %>
-       <%= post.content %>
-       <br>
-       <small>
-           <%= post.user.name %>
+   </div>
+   <div class="d-flex align-items-center">
+       <small class="mr-3">
+           <!-- Like button for the post -->
+           <a class="toggle-like-button text-dark no-decoration like-comment-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+               <i class="fas fa-thumbs-up"></i> <%= post.likes.length %> Likes
+           </a>
        </small>
-
-       <!-- CHANGE :: display the likes of this post, if the user is logged in, then show the link to toggle likes, else, just show the count -->
-       <br>
-           <!-- study about the data attribute -->
-       <small>
-           <% if (locals.user){ %>
-               <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                       <%= post.likes.length %> Likes
-               </a>
-           <% }else{ %>
-               <%= post.likes.length %> Likes
-           <% } %>
+       <small class="mr-3 toggle-comments">
+           <!-- Comments icon with toggle-comments-button class -->
+           <!-- Update href to "javascript:void(0)" to prevent default behavior -->
+           <a href="javascript:void(0);" class="toggle-comments-button no-decoration like-comment-button" data-post-id="<%= post._id %>">
+               <i class="fas fa-comments"></i> Comments
+           </a>
        </small>
-
-   </p>
-   <div class="post-comments">
-       <% if (locals.user){ %>
-           <!-- let's give an id to the new comment form, we'll also need to make the same changes in home_posts.js where we're adding a post to the page -->
-           <form id="post-<%= post._id %>-comments-form" action="/comments/create" method="POST">
-               <input type="text" name="content" placeholder="Type Here to add comment..." required>
-               <input type="hidden" name="post" value="<%= post._id %>" >
-               <input type="submit" value="Add Comment">
-           </form>
-
-       <% } %>
-
+   </div>
+   <!-- Comment form always visible if user logged in -->
+   <% if (locals.user){ %>
+       <form id="post-<%= post._id %>-comments-form" action="/comments/create" method="POST" class="mt-3 mb-3">
+           <div class="input-group">
+               <input type="text" name="content" class="form-control" placeholder="Type Here to add comment..." required>
+               <div class="input-group-append">
+                   <button class="btn btn-outline-secondary" type="submit">Add Comment</button>
+               </div>
+           </div>
+           <input type="hidden" name="post" value="<%= post._id %>" >
+       </form>
+   <% } %>
+   <!-- Comments section -->
+   <div class="post-comments mt-3 d-none">
        <div class="post-comments-list">
-           <ul id="post-comments-<%= post._id %>">
+           <ul id="post-comments-<%= post._id %>" class="list-group">
                <% for (comment of post.comments){%>
-
+                   <!-- Include comment partial -->
                    <%- include('_comment') -%>
-                   
-               
                <%} %>
            </ul>
        </div>
    </div>
-   
 </li>
+
+<!-- JavaScript to handle comments toggle -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+   // Get all elements with class toggle-comments-button
+   const toggleCommentButtons = document.querySelectorAll('.toggle-comments-button');
+   // Loop through each button
+   toggleCommentButtons.forEach(button => {
+       // Add click event listener to each button
+       button.addEventListener('click', function() {
+           // Get the post ID associated with the clicked button
+           const postId = button.getAttribute('data-post-id');
+           // Find the comments section corresponding to the post ID
+           const commentsSection = document.querySelector(`#post-${postId} .post-comments`);
+           // Toggle the display of the comments section
+           commentsSection.classList.toggle('d-none');
+       });
+   });
+});
+</script>
