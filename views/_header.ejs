@@ -7,7 +7,7 @@
             <div class="col-md-6 text-right">
                 <ul id="user-info" class="list-inline mb-0">
                     <% if(locals.user){ %>
-                        <li class="list-inline-item mr-3"><a href="/users/profile"><%= user.name %></a></li>
+                        <li class="list-inline-item mr-3"><a href="/users/profile/<%= user._id %>"><%= user.name %></a></li>
                         <li class="list-inline-item"><a href="/users/sign-out">Sign out</a></li>
                     <%}else{%>
                         <li class="list-inline-item mr-3"><a href="/users/sign-up">Sign Up</a></li>

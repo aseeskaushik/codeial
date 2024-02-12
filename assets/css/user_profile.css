@@ -1,3 +1,49 @@
+/* Custom CSS */
 body {
-  margin: 0px;
-  background-color: blue; }
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; }
+
+#profile-container {
+  background-color: #f8f9fa;
+  min-height: 90vh; }
+
+#profile-content {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+#profile-details {
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  min-height: 70vh;
+  min-width: 35vw; }
+
+#profile-photo {
+  text-align: center;
+  margin-bottom: 1rem;
+  /* Adjust as needed */ }
+
+#user-avatar {
+  width: 150px;
+  height: 150px; }
+
+#profile-form {
+  padding-left: 1.25rem;
+  /* Adjust as needed */
+  padding-right: 1.25rem;
+  /* Adjust as needed */ }
+
+#profile-info {
+  text-align: left; }
+
+#edit-profile-form .form-group {
+  margin-bottom: 1rem;
+  /* Adjust as needed */ }
+
+#edit-profile-form .btn-block {
+  width: 100%; }
+
+@media (max-width: 768px) {
+  .col-md-6.p-5 {
+    max-width: 90vw; } }
